@@ -1,9 +1,9 @@
-public class Series
+ public class Series
 {
-    static int IdSerie {get;set;}
-    static string Nombre {get;set;}
-    static int AñoIinicio {get;set;}
-    static string Sinopsis {get;set;}
-    static string ImagenSerie {get;set;}
+    public int IdSerie {get;set;}
+    public string Nombre {get;set;}
+    public int AñoIinicio {get;set;}
+    public string Sinopsis {get;set;}
+    public string ImagenSerie {get;set;}
 
 }

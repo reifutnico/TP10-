@@ -31,4 +31,37 @@ public class BD{
         }
     }
 
+    public static Actores selectActor(int id) {
+        Actores Actor = null;
+
+        using (SqlConnection bd = new SqlConnection(_connection))
+        {
+            string query = "SELECT * FROM Series WHERE IdSerie = @Zid";
+            Actor = bd.QueryFirstOrDefault<Actores>(query, new {Zid = id});
+        }
+        return Actor;
+    }
+
+    public static Series selectSerie(int id) {
+        Series Serie = null;
+
+        using (SqlConnection bd = new SqlConnection(_connection))
+        {
+            string query = "SELECT * FROM Series WHERE IdSerie = @Zid";
+            Serie = bd.QueryFirstOrDefault<Series>(query, new {Zid = id});
+        }
+        return Serie;
+    }
+
+    public static Temporada selectTemporada(int id) {
+        Temporada Temporada = null;
+
+        using (SqlConnection bd = new SqlConnection(_connection))
+        {
+            string query = "SELECT * FROM Temporadas WHERE IdTemporada = @Zid";
+            Temporada = bd.QueryFirstOrDefault<Temporada>(query, new {Zid = id});
+        }
+        return Temporada;
+    }
+
 }
