@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<header class="header">
+
+    <img src="#" alt="logo">
+
+    <p class="parrafo">Aguante las series!</p>
+
+</header>
+
+<div class="temporadas">
+
+    @foreach (Series s in ViewBag.series)
+    {
+        <div class="serie__carta">
+            <h1>@s.Nombre</h1>
+            
+            <p class="serie__desc">@s.Sinopsis</p>
+        </div>
+    }
+</div>
