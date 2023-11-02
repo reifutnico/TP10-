@@ -21,16 +21,6 @@ public class BD{
             return bd.Query<Series>(query).ToList();
         }
     }
-
-    public static List<Temporada> selectTemporada() {
-
-        using (SqlConnection bd = new SqlConnection(_connection))
-        {
-            string query = "SELECT * FROM Temporadas";
-            return bd.Query<Temporada>(query).ToList();
-        }
-    }
-
     public static List<Actores> selectActor(int id) {
         using (SqlConnection bd = new SqlConnection(_connection))
         {
@@ -50,13 +40,13 @@ public class BD{
         return Serie;
     }
 
-    public static Temporada selectTemporada(int id) {
-        Temporada Temporada = null;
+    public static List<Temporada> selectTemporada(int id) {
+        List<Temporada> Temporada = null;
 
         using (SqlConnection bd = new SqlConnection(_connection))
         {
             string query = "SELECT * FROM Temporadas WHERE IdTemporada = @Zid";
-            Temporada = bd.QueryFirstOrDefault<Temporada>(query, new {Zid = id});
+            Temporada = bd.Query<Temporada>(query, new {Zid = id}).ToList();
         }
         return Temporada;
     }

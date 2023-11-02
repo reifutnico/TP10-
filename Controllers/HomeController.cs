@@ -16,11 +16,14 @@ public class HomeController : Controller
         return BD.selectSerie(Id);
     }
 
-        public List<Actores> ModalActores(int Id){
+     public List<Actores> ModalActores(int Id){
+        Console.WriteLine("INFO");
+
         return BD.selectActor(Id);        
     }
-        public Temporada ModalTemporada(int Id){
+        public List<Temporada> ModalTemporada(int Id){
         Console.WriteLine("INFO3");
-        return BD.selectTemporada(Id);        
+        List<Temporada> lista=BD.selectTemporada(Id);
+        return lista;
     }
 }

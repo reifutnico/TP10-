@@ -5,5 +5,7 @@
     public int AñoIinicio {get;set;}
     public string Sinopsis {get;set;}
     public string ImagenSerie {get;set;}
+static Series(){
 
+    }
 }

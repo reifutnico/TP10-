@@ -4,7 +4,6 @@
 // Write your JavaScript code.
 
 const mostrarModalSerie = (idBoton) => {
-mostrarModalActores
     $.ajax(
         {
             type: "POST",
@@ -13,16 +12,14 @@ mostrarModalActores
             data: {Id: idBoton},
             success: (response) => {
                 console.log(response);
-                $("#contenido__img").attr('src',response.imagenSerie),
-                $("#contenido__parrafo").html(response.nombre)
+                $("#titulo").html("Sinopsis");
+                $("#contenido").html("<p>"+response.sinopsis+"</p>")
             }
         }
     )
 }
 
 const mostrarModalActores = (idBoton) => {
-
-
     $.ajax(
         {
             type: "POST",
@@ -43,17 +40,26 @@ const mostrarModalActores = (idBoton) => {
     )
 }
 
-const mostrarModalTemporada = (idBoton) => {
-
+﻿function mostrarModalTemporada(idSerie){
     $.ajax(
         {
-            type: "POST",
-            datatype: "JSON",
-            url: "/HomeController/ModalTemporada",
-            data: {Id: idBoton},
-            success: (response) => {
-                $("#contenido__parrafo").html(response.tituloTemporada)
-                $("#contenido__img").attr('src', "#")
+            type:'POST',
+            dataType:'JSON',
+            url:'/Home/ModalTemporada',
+            data:{Id:idSerie},
+            success:
+            function(response){
+
+                let temporadas=[];
+                for (const temp of response) {
+                   temporadas.push("<li>"+temp.numeroTemporada+"- "+temp.tituloTemporada+"</li>");
+
+                }
+                console.log(response)
+
+                $("#titulo").html("Temporadas");
+                $("#contenido").html(temporadas);
+
             }
         }
     )
